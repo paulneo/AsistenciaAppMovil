@@ -13,6 +13,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  {{event.name}}
+<ion-content padding>
+
+  <button ion-button (click)="scanCode()">Scan ... </button>
+    <ion-card-content *ngIf="scannedCode">
+        {{scannedCode}}
+    </ion-card-content>
+
 </ion-content>

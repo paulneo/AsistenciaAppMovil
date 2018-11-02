@@ -18,20 +18,21 @@ import { CameraQrPage } from '../camera-qr/camera-qr';
 })
 export class ListEventsPage {
 
-  event: any;
+  events: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListEventsPage');
     this.events = [
       { name: 'evento1'},
       { name: 'evento2'},
       { name: 'evento3'},
       { name: 'evento4'}
     ];
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListEventsPage');
   }
   pushEvent(events) {
     // Reset the content nav to have just this page
