@@ -9,6 +9,7 @@ import { ListEventsPage } from '../pages/list-events/list-events';
 import { RegisterAssistancePage } from '../pages/register-assistance/register-assistance';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,8 +29,6 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Lista de eventos', component: ListEventsPage },
       { title: 'Registrar Asistencia', component: RegisterAssistancePage }
-
-
     ];
 
   }

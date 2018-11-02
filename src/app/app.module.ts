@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ListEventsPage } from '../pages/list-events/list-events';
 import { RegisterAssistancePage } from '../pages/register-assistance/register-assistance';
+import { CameraQrPage } from '../pages/camera-qr/camera-qr';
+
 
 
 
@@ -19,7 +21,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ListPage,
     ListEventsPage,
-    RegisterAssistancePage
+    RegisterAssistancePage,
+    CameraQrPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ListPage,
     ListEventsPage,
-    RegisterAssistancePage
+    RegisterAssistancePage,
+    CameraQrPage
   ],
   providers: [
     StatusBar,
