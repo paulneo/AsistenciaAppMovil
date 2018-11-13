@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CameraQrPage } from '../camera-qr/camera-qr';
-
+// import { CameraQrPage } from '../camera-qr/camera-qr';
+import { EventServiceProvider } from '../../providers/event-service/event-service';
 /**
  * Generated class for the ListEventsPage page.
  *
@@ -20,26 +20,26 @@ export class ListEventsPage {
 
   events: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public eventServiceProvider: EventServiceProvider) {
 
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListEventsPage');
-    this.events = [
-      { name: 'evento1'},
-      { name: 'evento2'},
-      { name: 'evento3'},
-      { name: 'evento4'}
-    ];
+  ionViewDidLoad(){
+    this.eventServiceProvider.getEvents()
+    .then(data => {
+      this.events = data;
+      console.log(this.events);
+    });
   }
-  pushEvent(events) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.navCtrl.push(CameraQrPage, {
-      name:events
-   });
-  }
+
+
+  // pushEvent(events) {
+  //   // Reset the content nav to have just this page
+  //   // we wouldn't want the back button to show in this scenario
+  //   this.navCtrl.push(CameraQrPage, {
+  //     name:events
+  //  });
+  // }
 
 }
