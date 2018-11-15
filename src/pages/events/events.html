@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ListEventsPage page.
+  Generated template for the EventsPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -14,10 +14,12 @@
 </ion-header>
 
 
+
 <ion-content >
   <ion-list inset>
-    <button >
-      <p>Hola</p>
+    <button ion-item *ngFor="let event of events" (click)="eventSelected()" id="{{event.id}}">
+      <h2>{{ event.name | uppercase }}</h2>
+      <p>{{ event.place }}</p>
     </button>
   </ion-list>
 </ion-content>

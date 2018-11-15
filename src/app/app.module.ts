@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { ListEventsPage } from '../pages/list-events/list-events';
 import { RegisterAssistancePage } from '../pages/register-assistance/register-assistance';
 import { CameraQrPage } from '../pages/camera-qr/camera-qr';
+import { EventsPage } from '../pages/events/events';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -28,7 +29,8 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
     ListPage,
     ListEventsPage,
     RegisterAssistancePage,
-    CameraQrPage
+    CameraQrPage,
+    EventsPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
     ListPage,
     ListEventsPage,
     RegisterAssistancePage,
-    CameraQrPage
+    CameraQrPage,
+    EventsPage
   ],
   providers: [
     StatusBar,
@@ -51,7 +54,7 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EventServiceProvider,
-  
+
 
   ]
 })
