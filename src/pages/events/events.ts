@@ -34,9 +34,10 @@ export class EventsPage {
     });
   }
 
-eventSelected(){
-  this.navCtrl.push(ListEventsPage);
+eventSelected(event){
 
+  this.navCtrl.push(ListEventsPage, {
+    event: event
+  });
   }
-
 }

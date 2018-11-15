@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { CameraQrPage } from '../camera-qr/camera-qr';
-import { EventServiceProvider } from '../../providers/event-service/event-service';
+// import { EventServiceProvider } from '../../providers/event-service/event-service';
 /**
  * Generated class for the ListEventsPage page.
  *
@@ -18,19 +18,18 @@ import { EventServiceProvider } from '../../providers/event-service/event-servic
 })
 export class ListEventsPage {
 
-  events: any;
+  list_events:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eventServiceProvider: EventServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 
   }
 
   ionViewDidLoad(){
-    this.eventServiceProvider.getEvents()
-    .then(data => {
-      this.events = data;
-      console.log(this.events);
-    });
+    this.list_events = this.navParams.get('event').scheduled_event;
+    console.log(this.navParams.get('event').scheduled_event)
+
+
   }
 
 

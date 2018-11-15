@@ -15,9 +15,10 @@
 
 
 <ion-content >
-  <ion-list inset>
-    <button >
-      <p>Hola</p>
+  <ion-list inset >
+    <button ion-item *ngFor="let list_event of list_events"  >
+      <h2>{{ list_event.name | uppercase }}</h2>
+      <p>{{ list_event.date }}</p>
     </button>
   </ion-list>
 </ion-content>

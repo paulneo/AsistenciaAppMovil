@@ -17,7 +17,7 @@
 
 <ion-content >
   <ion-list inset>
-    <button ion-item *ngFor="let event of events" (click)="eventSelected()" id="{{event.id}}">
+    <button ion-item *ngFor="let event of events" (click)="eventSelected(event)" >
       <h2>{{ event.name | uppercase }}</h2>
       <p>{{ event.place }}</p>
     </button>
