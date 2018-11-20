@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { CameraQrPage } from '../camera-qr/camera-qr';
+import { CameraQrPage } from '../camera-qr/camera-qr';
 // import { EventServiceProvider } from '../../providers/event-service/event-service';
 /**
  * Generated class for the ListEventsPage page.
@@ -21,7 +21,7 @@ export class ListEventsPage {
   list_events:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+    this.assistance = "Registrar";
 
   }
 
@@ -32,6 +32,10 @@ export class ListEventsPage {
 
   }
 
+  eventRegister(){
+
+    this.navCtrl.push(CameraQrPage);
+  }
 
   // pushEvent(events) {
   //   // Reset the content nav to have just this page

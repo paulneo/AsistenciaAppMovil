@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { CameraQrPage } from '../camera-qr/camera-qr';
+import { CameraQrPage } from '../camera-qr/camera-qr';
 import { ListEventsPage } from '../list-events/list-events';
 
 import { EventServiceProvider } from '../../providers/event-service/event-service';
@@ -34,10 +34,11 @@ export class EventsPage {
     });
   }
 
-eventSelected(event){
+  eventSelected(event){
 
-  this.navCtrl.push(ListEventsPage, {
-    event: event
-  });
+    this.navCtrl.push(ListEventsPage, {
+      event: event
+    });
   }
+
 }
