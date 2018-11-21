@@ -17,6 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { EventServiceProvider } from '../providers/event-service/event-service';
+import { PersonServiceProvider } from '../providers/person-service/person-service';
+
 
 
 
@@ -54,6 +56,7 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EventServiceProvider,
+    PersonServiceProvider,
 
 
   ]

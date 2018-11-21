@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   and Angular DI.
 */
 @Injectable()
-export class EventServiceProvider {
+export class PersonServiceProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello EventServiceProvider Provider');
@@ -17,9 +17,9 @@ export class EventServiceProvider {
   // apiUrl = 'http://localhost:3000/api/v1';
   apiUrl = 'http://10.6.6.97:3000/api/v1';
 
-  getEvents() {
+  getPeople() {
   return new Promise(resolve => {
-    this.http.get(this.apiUrl+'/events').subscribe(data => {
+    this.http.get(this.apiUrl+'/student_enrollments').subscribe(data => {
       resolve(data);
     }, err => {
       console.log(err);
