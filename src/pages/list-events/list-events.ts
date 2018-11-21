@@ -32,7 +32,7 @@ export class ListEventsPage {
 
   }
 
-  eventRegister(){
+  eventRegister(list_event){
 
     this.navCtrl.push(CameraQrPage);
   }
