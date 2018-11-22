@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CameraQrPage } from '../camera-qr/camera-qr';
 
 
-import { PersonServiceProvider } from '../../providers/person-service/person-service';
+
 
 /**
  * Generated class for the ListEventsPage page.
@@ -21,8 +21,8 @@ import { PersonServiceProvider } from '../../providers/person-service/person-ser
 export class ListEventsPage {
   assistance:any;
   list_events:any;
-  people:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public personServiceProvider: PersonServiceProvider) {
+  casaca:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 
   }
@@ -35,17 +35,13 @@ export class ListEventsPage {
     console.log(this.navParams.get('event').scheduled_event)
 
 
-    this.personServiceProvider.getPeople()
-    .then(data => {
-      this.people = data;
-      console.log(this.people);
-    });
 
   }
 
   eventRegister(list_event){
 
     this.navCtrl.push(CameraQrPage);
+
   }
 
 

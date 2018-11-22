@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="scanCode()">Scan ... </button>
+  <button ion-button (click)="scanCode(scannedCode)">Scan ... </button>
     <ion-card-content *ngIf="scannedCode">
         {{scannedCode}}
     </ion-card-content>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-
+import { PersonServiceProvider } from '../../providers/person-service/person-service';
 /**
  * Generated class for the CameraQrPage page.
  *
@@ -17,22 +17,51 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 export class CameraQrPage {
   qrData=null;
   scannedCode=null;
-  event:any
+  people:any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner,public personServiceProvider: PersonServiceProvider) {
+
 
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CameraQrPage');
-    this.event = this.navParams.get('name');
-  }
 
+    this.personServiceProvider.getPeople()
+    .then(data => {
+      this.people = data;
+
+
+    });
+
+    // for (let i = 0; i < this.people.length; i++) {
+    //    console.log(this.people[i]);
+    // }
+    // for (let i = 1; i < 11; i++) {
+    //   this.items.push({
+    //     title: 'Item ' + i,
+    //     note: 'This is item #' + i,
+    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    //   });
+    // }
+  }
   scanCode(){
+
+    console.log(this.people)
+    for (let numero of this.people){
+      console.log(numero.person.id);
+      if (numero.person.id == 1) {
+          console.log(numero.person.name)
+      }
+    }
     this.barcodeScanner.scan().then(barcodeData =>{
       this.scannedCode = barcodeData.text;
+
+
     })
+
   }
 }
