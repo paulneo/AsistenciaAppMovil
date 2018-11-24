@@ -58,7 +58,6 @@ export class CameraQrPage {
     this.barcodeScanner.scan().then(barcodeData =>{
       this.scannedCode = barcodeData.text;
 
-
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
 
