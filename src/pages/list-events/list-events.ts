@@ -21,7 +21,7 @@ import { CameraQrPage } from '../camera-qr/camera-qr';
 export class ListEventsPage {
   assistance:any;
   list_events:any;
-  casaca:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 
@@ -40,10 +40,10 @@ export class ListEventsPage {
 
   eventRegister(list_event){
 
-    this.navCtrl.push(CameraQrPage);
-
+    this.navCtrl.push(CameraQrPage, {
+      list_event: list_event
+    });
   }
-
 
   // pushEvent(events) {
   //   // Reset the content nav to have just this page

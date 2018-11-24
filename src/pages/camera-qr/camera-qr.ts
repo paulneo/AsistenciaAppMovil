@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { PersonServiceProvider } from '../../providers/person-service/person-service';
+
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map'
+
 /**
  * Generated class for the CameraQrPage page.
  *
@@ -18,17 +22,16 @@ export class CameraQrPage {
   qrData=null;
   scannedCode=null;
   people:any;
+  list_events:any;
 
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner,public personServiceProvider: PersonServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner,public personServiceProvider: PersonServiceProvider , public http: Http) {
 
 
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CameraQrPage');
 
     this.personServiceProvider.getPeople()
     .then(data => {
@@ -36,6 +39,7 @@ export class CameraQrPage {
 
 
     });
+
 
     // for (let i = 0; i < this.people.length; i++) {
     //    console.log(this.people[i]);
@@ -49,19 +53,33 @@ export class CameraQrPage {
     // }
   }
   scanCode(){
+    console.log(this.navParams.get('list_event').id)
 
-    console.log(this.people)
-    for (let numero of this.people){
-      console.log(numero.person.id);
-      if (numero.person.id == 1) {
-          console.log(numero.person.name)
-      }
-    }
     this.barcodeScanner.scan().then(barcodeData =>{
       this.scannedCode = barcodeData.text;
 
 
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+
+        let body = {
+          registered_time: "2018-11-24T10:11:00.000Z",
+          "student_enrollment": {
+            id: parseInt(this.scannedCode)
+          },
+          "scheduled_event": {
+            id: this.navParams.get('list_event').id,
+
+          }
+        };
+
+        this.http.post('http://10.6.6.98:3000/api/v1/student_assistances', JSON.stringify(body), {headers: headers})
+          .map(res => res.json())
+          .subscribe(data => {
+            console.log(data);
+        });
     })
 
   }
+
 }

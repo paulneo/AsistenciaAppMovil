@@ -15,7 +15,7 @@ export class PersonServiceProvider {
   }
 
   // apiUrl = 'http://localhost:3000/api/v1';
-  apiUrl = 'http://10.6.6.97:3000/api/v1';
+  apiUrl = 'http://10.6.6.98:3000/api/v1';
 
   getPeople() {
   return new Promise(resolve => {

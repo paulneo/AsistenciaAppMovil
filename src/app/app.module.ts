@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -18,6 +19,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { EventServiceProvider } from '../providers/event-service/event-service';
 import { PersonServiceProvider } from '../providers/person-service/person-service';
+import { AssistanceProvider } from '../providers/assistance/assistance';
 
 
 
@@ -38,7 +40,8 @@ import { PersonServiceProvider } from '../providers/person-service/person-servic
     BrowserModule,
     IonicModule.forRoot(MyApp),
     NgxQRCodeModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,6 +60,7 @@ import { PersonServiceProvider } from '../providers/person-service/person-servic
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EventServiceProvider,
     PersonServiceProvider,
+    AssistanceProvider,
 
 
   ]
