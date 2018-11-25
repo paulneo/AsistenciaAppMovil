@@ -39,18 +39,6 @@ export class CameraQrPage {
 
 
     });
-
-
-    // for (let i = 0; i < this.people.length; i++) {
-    //    console.log(this.people[i]);
-    // }
-    // for (let i = 1; i < 11; i++) {
-    //   this.items.push({
-    //     title: 'Item ' + i,
-    //     note: 'This is item #' + i,
-    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-    //   });
-    // }
   }
   scanCode(){
     console.log(this.navParams.get('list_event').id)
@@ -58,25 +46,44 @@ export class CameraQrPage {
     this.barcodeScanner.scan().then(barcodeData =>{
       this.scannedCode = barcodeData.text;
 
+        // let headers = new Headers();
+        // headers.append("Content-Type", "application/json");
+        //
+        // let datos = {
+        //   registered_time: "2018-11-24T10:11:00.000Z",
+        //   student_enrollment: parseInt(this.scannedCode),
+        //   scheduled_event: this.navParams.get('list_event').id,
+        //   assistance:"Temprano"
+        // };
+        //
+        // var url = 'http://10.6.6.98:3000/api/v1/student_assistances';
+        // return new Promise(resolve => {
+        //  this.http.post(url,JSON.stringify(datos),{headers: headers})
+        //     .subscribe(data => {
+        //       resolve(data);
+        //        console.log(data);
+        //      });
+        // });
         let headers = new Headers();
-        headers.append("Content-Type", "application/json");
-
-        let body = {
+        headers.append("Accept", 'application/json');
+        headers.append('Content-Type', 'application/json');
+        var url = 'http://10.6.6.98:3000/api/v1/student_assistances';
+        let datos = {
           registered_time: "2018-11-24T10:11:00.000Z",
-          "student_enrollment": {
-            id: parseInt(this.scannedCode)
-          },
-          "scheduled_event": {
-            id: this.navParams.get('list_event').id,
-
-          }
+          student_enrollment_id: parseInt(this.scannedCode),
+          scheduled_event_id: this.navParams.get('list_event').id,
+          assistance:"Temprano"
         };
 
-        this.http.post('http://10.6.6.98:3000/api/v1/student_assistances', JSON.stringify(body), {headers: headers})
-          .map(res => res.json())
-          .subscribe(data => {
-            console.log(data);
+        return new Promise(resolve => {
+          this.http.post(url, JSON.stringify(datos), { headers: headers })
+            .subscribe(data => {
+                console.log(datos)
+                console.log(data['_body']); //Getting blank response in network tab
+                console.log(data);
+            });
         });
+
     })
 
   }

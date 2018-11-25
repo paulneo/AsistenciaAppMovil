@@ -25,5 +25,6 @@ export class PersonServiceProvider {
       console.log(err);
     });
   });
-}
+  }
+
 }
