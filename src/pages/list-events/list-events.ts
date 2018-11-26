@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CameraQrPage } from '../camera-qr/camera-qr';
+import { RegisterAssistancePage } from '../register-assistance/register-assistance';
 
 
 
@@ -43,6 +44,12 @@ export class ListEventsPage {
     this.navCtrl.push(CameraQrPage, {
       list_event: list_event
     });
+  }
+  assitanceRegister(list_event){
+
+      this.navCtrl.push(RegisterAssistancePage, {
+        list_event: list_event
+      });
   }
 
   // pushEvent(events) {

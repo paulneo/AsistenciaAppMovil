@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { PersonServiceProvider } from '../../providers/person-service/person-service';
 
+
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
 
@@ -23,6 +24,8 @@ export class CameraQrPage {
   scannedCode=null;
   people:any;
   list_events:any;
+  registrado:any;
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner,public personServiceProvider: PersonServiceProvider , public http: Http) {
@@ -37,36 +40,20 @@ export class CameraQrPage {
     .then(data => {
       this.people = data;
 
-
     });
+
   }
   scanCode(){
-    console.log(this.navParams.get('list_event').id)
+
+
 
     this.barcodeScanner.scan().then(barcodeData =>{
       this.scannedCode = barcodeData.text;
 
-        // let headers = new Headers();
-        // headers.append("Content-Type", "application/json");
-        //
-        // let datos = {
-        //   registered_time: "2018-11-24T10:11:00.000Z",
-        //   student_enrollment: parseInt(this.scannedCode),
-        //   scheduled_event: this.navParams.get('list_event').id,
-        //   assistance:"Temprano"
-        // };
-        //
-        // var url = 'http://10.6.6.98:3000/api/v1/student_assistances';
-        // return new Promise(resolve => {
-        //  this.http.post(url,JSON.stringify(datos),{headers: headers})
-        //     .subscribe(data => {
-        //       resolve(data);
-        //        console.log(data);
-        //      });
-        // });
-        let headers = new Headers();
+                let headers = new Headers();
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json');
+
         var url = 'http://10.6.6.98:3000/api/v1/student_assistances';
         let datos = {
           registered_time: "2018-11-24T10:11:00.000Z",
@@ -79,8 +66,14 @@ export class CameraQrPage {
           this.http.post(url, JSON.stringify(datos), { headers: headers })
             .subscribe(data => {
                 console.log(datos)
-                console.log(data['_body']); //Getting blank response in network tab
+                console.log(data['_body']);
                 console.log(data);
+                if (data['_body'] == "false") {
+                    this.registrado="El ALUMNO YA FUE REGISTRADO"
+                }
+                else{
+                  this.registrado="Registro satisfactoriamente"
+                }
             });
         });
 

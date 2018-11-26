@@ -41,7 +41,7 @@
 
     <ion-list *ngSwitchCase="'alumnos'">
       <ion-list inset >
-        <button ion-item *ngFor="let list_event of list_events">
+        <button ion-item *ngFor="let list_event of list_events" (click)="assitanceRegister(list_event)">
           <h2>{{ list_event.name | uppercase }}</h2>
           <p>{{ list_event.date }}</p>
         </button>

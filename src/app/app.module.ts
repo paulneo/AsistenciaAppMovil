@@ -20,6 +20,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { EventServiceProvider } from '../providers/event-service/event-service';
 import { PersonServiceProvider } from '../providers/person-service/person-service';
 import { AssistanceProvider } from '../providers/assistance/assistance';
+import { ScheduledEventsProvider } from '../providers/scheduled_events-service/scheduled_events-service';
+
 
 
 
@@ -61,6 +63,7 @@ import { AssistanceProvider } from '../providers/assistance/assistance';
     EventServiceProvider,
     PersonServiceProvider,
     AssistanceProvider,
+    ScheduledEventsProvider,
 
 
   ]
