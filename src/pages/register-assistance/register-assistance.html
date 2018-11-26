@@ -17,10 +17,10 @@
 <ion-content padding>
 
   <ion-list inset >
-    <button ion-item *ngFor="let assistancePeople of assistancePeoples" >
-      <h2>{{ assistancePeople.name | uppercase }}</h2>
-      <p>{{ assistancePeople.lastName }}</p>
-    </button>
+    <ion-item ion-item *ngFor="let assistancePeople of assistancePeoples">
+    <h2>{{ assistancePeople.name}} {{ assistancePeople.lastName }}</h2>
+    <h3>{{ assistancePeople.dni}}</h3>
+  </ion-item>
   </ion-list>
 
 </ion-content>
