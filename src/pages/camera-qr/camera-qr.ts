@@ -56,7 +56,7 @@ export class CameraQrPage {
 
         var url = 'http://10.6.6.98:3000/api/v1/student_assistances';
         let datos = {
-          registered_time: "2018-11-24T10:11:00.000Z",
+
           student_enrollment_id: parseInt(this.scannedCode),
           scheduled_event_id: this.navParams.get('list_event').id,
           assistance:"Temprano"
