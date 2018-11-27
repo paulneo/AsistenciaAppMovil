@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { UsersProvider } from '../../providers/user-service/user-service';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,25 +17,29 @@ import { UsersProvider } from '../../providers/user-service/user-service';
 })
 export class LoginPage {
 
-  login:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public usersProvider:UsersProvider) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCrtl :AlertController, private usersProvider:UsersProvider) {
   }
 
+  login(FormLogin){
+    this.usersProvider.login(FormLogin.value).subscribe(data =>{
+      if (data.succes === true) {
+          this.navCtrl.setRoot(HomePage);
+      }else{
+        FormLogin.password = '';
+        let alert = this.alertCrtl.create({
+          title:'Login Falied',
+          subTitle: data.message,
+          buttons: ['OK']
+        })
+        alert.present();
+      }
+    })
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
 
-    this.usersProvider.getUsers()
-    .then(data => {
-      this.login = data;
-        for (let num of this.login){
-          console.log(num.encrypted_password)
-          if (num.encrypted_password == "123456") {
-            console.log("Holi")
 
-          }
-
-        }
-    });
 
   }
 

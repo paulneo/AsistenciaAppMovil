@@ -4,9 +4,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { EventsPage } from '../pages/events/events';
 import { LoginPage } from '../pages/login/login';
+import { UsersProvider } from '../providers/user-service/user-service';
+import { LoginUpPage } from '../pages/login-up/login-up';
 
 
 
@@ -17,17 +18,22 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = LoginUpPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private usersProvider:UsersProvider) {
+
+    if (this.usersProvider.isLogged() === true) {
+      this.rootPage = HomePage;
+    }else{
+      this.rootPage = LoginUpPage;
+    }
+    this.rootPage = LoginUpPage;
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-
-      { title: 'List', component: ListPage },
       { title: 'Eventos', component: EventsPage }
 
     ];

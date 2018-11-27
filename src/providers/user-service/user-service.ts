@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { Http, Response , Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -9,22 +9,46 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class UsersProvider {
-
-  constructor(public http: HttpClient) {
+  baseUrl = 'http://10.6.6.98:3000/v2/users';
+  constructor(public http: Http) {
     console.log('Hello EventServiceProvider Provider');
   }
 
   // apiUrl = 'http://localhost:3000/api/v1';
-  apiUrl = 'http://10.6.6.98:3000/api/v1';
-
+  createAuthorizationHeader(headers: Headers){
+    headers.append('Authorization' , window.localStorage.getItem('authentication_token'));
+  }
   getUsers() {
-  return new Promise(resolve => {
-    this.http.get(this.apiUrl+'/users').subscribe(data => {
-      resolve(data);
-    }, err => {
-      console.log(err);
-    });
-  });
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+
+    return this.http.get(this.baseUrl,{
+      headers:headers
+    }).map(res => res.json());
+
+  }
+  login(data){
+    return this.http.post(this.baseUrl, data)
+    .map(this.extractData);
+  }
+  isLogged(){
+    if(window.localStorage.getItem('authentication_token')){
+      return true
+    }else{
+      return false
+    }
   }
 
+
+  logout(){
+    window.localStorage.removeItem('authentication_token');
+    return true;
+  }
+  private extractData(res: Response){
+    let body = res.json();
+    if (body.succes === true) {
+        window.localStorage.setItem('authentication_token', body.authentication_token);
+    }
+    return body || {};
+  }
 }

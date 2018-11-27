@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
 import { ListEventsPage } from '../pages/list-events/list-events';
 import { RegisterAssistancePage } from '../pages/register-assistance/register-assistance';
 import { CameraQrPage } from '../pages/camera-qr/camera-qr';
 import { EventsPage } from '../pages/events/events';
 import { LoginPage } from '../pages/login/login';
+import { LoginUpPage } from '../pages/login-up/login-up';
+
 
 
 
@@ -36,12 +38,12 @@ import { UsersProvider } from '../providers/user-service/user-service';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     ListEventsPage,
     RegisterAssistancePage,
     CameraQrPage,
     EventsPage,
-    LoginPage
+    LoginPage,
+    LoginUpPage
   ],
   imports: [
     BrowserModule,
@@ -54,12 +56,12 @@ import { UsersProvider } from '../providers/user-service/user-service';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     ListEventsPage,
     RegisterAssistancePage,
     CameraQrPage,
     EventsPage,
-    LoginPage
+    LoginPage,
+    LoginUpPage
   ],
   providers: [
     StatusBar,

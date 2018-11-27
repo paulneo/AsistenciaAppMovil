@@ -14,5 +14,18 @@
 
 
 <ion-content padding>
+  <form #FormLogin="ngForm" (ngSubmit)="login(FormLogin)">
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input [(ngModel)]="FormLogin.email" name="email" type="text" required ></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [(ngModel)]="FormLogin.password" name="password"  required type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button [disabled]="!FormLogin.form.valid" type="submit" full ion-button>Iniciar sesion</button>
+    </ion-item>
+  </form>
 </ion-content>
