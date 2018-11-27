@@ -28,7 +28,7 @@ export class LoginUpPage {
     console.log('ionViewDidLoad LoginUpPage');
   }
   login(){
-   if(this.email.value == "localos2000@gmail.com" && this.password.value == "123456"){
+   if(this.email.value == "admin@gmail.com" && this.password.value == "123456"){
     this.navCtrl.setRoot(EventsPage);
    }else{
     let alert = this.alertCtrl.create({

@@ -15,7 +15,7 @@ export class EventServiceProvider {
   }
 
   // apiUrl = 'http://localhost:3000/api/v1';
-  apiUrl = 'http://10.6.6.98:3000/api/v1';
+  apiUrl = 'http://192.168.122.1:3000/api/v1';
 
   getEvents() {
   return new Promise(resolve => {

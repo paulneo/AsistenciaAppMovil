@@ -54,7 +54,7 @@ export class CameraQrPage {
         headers.append("Accept", 'application/json');
         headers.append('Content-Type', 'application/json');
 
-        var url = 'http://10.6.6.98:3000/api/v1/student_assistances';
+        var url = 'http://192.168.122.1:3000/api/v1/student_assistances';
         let datos = {
 
           student_enrollment_id: parseInt(this.scannedCode),

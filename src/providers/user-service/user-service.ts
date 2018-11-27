@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class UsersProvider {
-  baseUrl = 'http://10.6.6.98:3000/v2/users';
+  baseUrl = 'http://192.168.122.1:3000/v2/users';
   constructor(public http: Http) {
     console.log('Hello EventServiceProvider Provider');
   }
