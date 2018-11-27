@@ -11,6 +11,8 @@ import { ListEventsPage } from '../pages/list-events/list-events';
 import { RegisterAssistancePage } from '../pages/register-assistance/register-assistance';
 import { CameraQrPage } from '../pages/camera-qr/camera-qr';
 import { EventsPage } from '../pages/events/events';
+import { LoginPage } from '../pages/login/login';
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,6 +23,8 @@ import { EventServiceProvider } from '../providers/event-service/event-service';
 import { PersonServiceProvider } from '../providers/person-service/person-service';
 import { AssistanceProvider } from '../providers/assistance/assistance';
 import { ScheduledEventsProvider } from '../providers/scheduled_events-service/scheduled_events-service';
+import { UsersProvider } from '../providers/user-service/user-service';
+
 
 
 
@@ -36,7 +40,8 @@ import { ScheduledEventsProvider } from '../providers/scheduled_events-service/s
     ListEventsPage,
     RegisterAssistancePage,
     CameraQrPage,
-    EventsPage
+    EventsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import { ScheduledEventsProvider } from '../providers/scheduled_events-service/s
     ListEventsPage,
     RegisterAssistancePage,
     CameraQrPage,
-    EventsPage
+    EventsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -64,6 +70,7 @@ import { ScheduledEventsProvider } from '../providers/scheduled_events-service/s
     PersonServiceProvider,
     AssistanceProvider,
     ScheduledEventsProvider,
+    UsersProvider
 
 
   ]
