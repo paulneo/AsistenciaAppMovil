@@ -29,7 +29,7 @@ export class LoginUpPage {
   }
   login(){
    if(this.email.value == "localos2000@gmail.com" && this.password.value == "123456"){
-    this.navCtrl.push(EventsPage);
+    this.navCtrl.setRoot(EventsPage);
    }else{
     let alert = this.alertCtrl.create({
      title: 'Datos incorrectos',
