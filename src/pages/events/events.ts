@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ListEventsPage } from '../list-events/list-events';
-import { LoginPage } from '../login/login';
+
+import { LoginUpPage } from '../login-up/login-up';
 
 import { EventServiceProvider } from '../../providers/event-service/event-service';
 
@@ -42,7 +43,7 @@ export class EventsPage {
     });
   }
   logout() {
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(LoginUpPage);
 
   }
 
